@@ -32,3 +32,9 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-created_time']
+
+    views = models.PositiveIntegerField(default=0)
+
+    def increase_views(self):
+        self.views +=1
+        self.save(update_fields=['views'])
